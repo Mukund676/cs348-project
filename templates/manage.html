@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card p-4 mb-4">
+    <h2>Add New Delay Record</h2>
+    <form method="POST" action="/manage" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Airline:</label>
+            <select name="airline_id" class="form-select">
+                {% for airline in airlines %}<option value="{{ airline.id }}">{{ airline.iata_code }} - {{ airline.name }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Airport:</label>
+            <select name="airport_id" class="form-select">
+                {% for airport in airports %}<option value="{{ airport.id }}">{{ airport.iata_code }} - {{ airport.name }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3"><label class="form-label">Year:</label><input type="number" class="form-control" name="year" required></div>
+        <div class="col-md-3"><label class="form-label">Month:</label><input type="number" class="form-control" name="month" required></div>
+        <div class="col-md-3"><label class="form-label">Total Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" required></div>
+        <div class="col-md-3"><label class="form-label">Carrier Delay (min):</label><input type="number" step="any" class="form-control" name="carrier_delay" required></div>
+        <div class="col-12"><button type="submit" class="btn btn-primary">Add Record</button></div>
+    </form>
+</div>
+
+<h3>Recent Records</h3>
+<table class="table table-striped table-hover mt-3 bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr><th>ID</th><th>Airline</th><th>Airport</th><th>Date</th><th>Flights</th><th>Carrier Delay</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.id }}</td>
+            <td>{{ record.airline.iata_code }} - {{ record.airline.name }}</td>
+            <td>{{ record.airport.iata_code }} - {{ record.airport.name }}</td>
+            <td>{{ record.month }}/{{ record.year }}</td>
+            <td>{{ record.arr_flights }}</td>
+            <td>{{ record.carrier_delay }}</td>
+            <td>
+                <a href="/edit/{{ record.id }}" class="btn btn-sm btn-warning">Edit</a>
+                <form action="/delete/{{ record.id }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

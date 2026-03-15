@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card p-4 mx-auto" style="max-width: 600px;">
+    <h2>Edit Record #{{ record.id }}</h2>
+    <h5 class="text-muted mb-4">{{ record.airline.name }} at {{ record.airport.name }}</h5>
+    
+    <form method="POST" action="/edit/{{ record.id }}">
+        <div class="mb-3"><label class="form-label">Year:</label><input type="number" class="form-control" name="year" value="{{ record.year }}" required></div>
+        <div class="mb-3"><label class="form-label">Month:</label><input type="number" class="form-control" name="month" value="{{ record.month }}" required></div>
+        <div class="mb-3"><label class="form-label">Total Arriving Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" value="{{ record.arr_flights }}" required></div>
+        <div class="mb-3"><label class="form-label">Carrier Delay (Minutes):</label><input type="number" step="any" class="form-control" name="carrier_delay" value="{{ record.carrier_delay }}" required></div>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="/manage" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}
