@@ -1,17 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card p-4 mx-auto" style="max-width: 600px;">
+<div class="card p-4 mx-auto" style="max-width: 800px;">
     <h2>Edit Record #{{ record.id }}</h2>
     <h5 class="text-muted mb-4">{{ record.airline.name }} at {{ record.airport.name }}</h5>
     
-    <form method="POST" action="/edit/{{ record.id }}">
-        <div class="mb-3"><label class="form-label">Year:</label><input type="number" class="form-control" name="year" value="{{ record.year }}" required></div>
-        <div class="mb-3"><label class="form-label">Month:</label><input type="number" class="form-control" name="month" value="{{ record.month }}" required></div>
-        <div class="mb-3"><label class="form-label">Total Arriving Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" value="{{ record.arr_flights }}" required></div>
-        <div class="mb-3"><label class="form-label">Carrier Delay (Minutes):</label><input type="number" step="any" class="form-control" name="carrier_delay" value="{{ record.carrier_delay }}" required></div>
-        <button type="submit" class="btn btn-success">Save Changes</button>
-        <a href="/manage" class="btn btn-secondary ms-2">Cancel</a>
+    <form method="POST" action="/edit/{{ record.id }}" class="row g-3">
+        <div class="col-md-4"><label class="form-label">Year:</label><input type="number" class="form-control" name="year" value="{{ record.year }}" required></div>
+        <div class="col-md-4"><label class="form-label">Month:</label><input type="number" class="form-control" name="month" value="{{ record.month }}" required></div>
+        <div class="col-md-4"><label class="form-label">Total Arriving Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" value="{{ record.arr_flights }}" required></div>
+        
+        <div class="col-md-4"><label class="form-label">Carrier Delay (min):</label><input type="number" step="any" class="form-control" name="carrier_delay" value="{{ record.carrier_delay }}" required></div>
+        <div class="col-md-4"><label class="form-label">Weather Delay (min):</label><input type="number" step="any" class="form-control" name="weather_delay" value="{{ record.weather_delay }}" required></div>
+        <div class="col-md-4"><label class="form-label">NAS Delay (min):</label><input type="number" step="any" class="form-control" name="nas_delay" value="{{ record.nas_delay }}" required></div>
+        <div class="col-md-6"><label class="form-label">Security Delay (min):</label><input type="number" step="any" class="form-control" name="security_delay" value="{{ record.security_delay }}" required></div>
+        <div class="col-md-6"><label class="form-label">Late Aircraft Delay (min):</label><input type="number" step="any" class="form-control" name="late_aircraft_delay" value="{{ record.late_aircraft_delay }}" required></div>
+        
+        <div class="col-12 mt-4">
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <a href="/manage" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
     </form>
 </div>
 {% endblock %}

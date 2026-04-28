@@ -18,8 +18,14 @@
         </div>
         <div class="col-md-3"><label class="form-label">Year:</label><input type="number" class="form-control" name="year" required></div>
         <div class="col-md-3"><label class="form-label">Month:</label><input type="number" class="form-control" name="month" required></div>
-        <div class="col-md-3"><label class="form-label">Total Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" required></div>
-        <div class="col-md-3"><label class="form-label">Carrier Delay (min):</label><input type="number" step="any" class="form-control" name="carrier_delay" required></div>
+        <div class="col-md-6"><label class="form-label">Total Flights:</label><input type="number" step="any" class="form-control" name="arr_flights" required></div>
+        
+        <div class="col-md-2"><label class="form-label">Carrier Delay:</label><input type="number" step="any" class="form-control" name="carrier_delay" value="0" required></div>
+        <div class="col-md-2"><label class="form-label">Weather Delay:</label><input type="number" step="any" class="form-control" name="weather_delay" value="0" required></div>
+        <div class="col-md-2"><label class="form-label">NAS Delay:</label><input type="number" step="any" class="form-control" name="nas_delay" value="0" required></div>
+        <div class="col-md-3"><label class="form-label">Security Delay:</label><input type="number" step="any" class="form-control" name="security_delay" value="0" required></div>
+        <div class="col-md-3"><label class="form-label">Late Aircraft Delay:</label><input type="number" step="any" class="form-control" name="late_aircraft_delay" value="0" required></div>
+        
         <div class="col-12"><button type="submit" class="btn btn-primary">Add Record</button></div>
     </form>
 </div>
